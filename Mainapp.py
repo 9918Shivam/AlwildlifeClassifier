@@ -1,41 +1,3 @@
-# from fastapi import FastAPI, File, UploadFile
-# from transformers import AutoProcessor, ViTForImageClassification
-# from PIL import Image
-# import torch
-# import io
-#
-# # Initialize FastAPI app
-# app = FastAPI()
-#
-# # Load the model
-# model_name = "google/vit-base-patch16-224"
-# processor = AutoProcessor.from_pretrained(model_name)
-# model = ViTForImageClassification.from_pretrained(model_name)
-#
-#
-#
-# @app.post("/predict/")
-# async def predict(file: UploadFile = File(...)):
-#     # Read image
-#     image_bytes = await file.read()
-#     image = Image.open(io.BytesIO(image_bytes))
-#
-#     # Preprocess the image
-#     inputs = processor(images=image, return_tensors="pt")
-#
-#     # Make prediction
-#     with torch.no_grad():
-#         outputs = model(**inputs)
-#         logits = outputs.logits
-#         predicted_label = logits.argmax(-1).item()
-#
-#     # Get class label
-#     animal_name = model.config.id2label.get(predicted_label, f"Class {predicted_label}")
-#
-#     return {"Predicted Animal": animal_name}
-
-
-
 
 
 from fastapi import FastAPI, File, UploadFile, HTTPException
@@ -84,4 +46,4 @@ async def predict(file: UploadFile = File(...)):
 
 
 # to run animal classifier with respect to fastapi: [uvicorn Mainapp:app --reload  (or)  uvicorn Mainapp:app --host 0.0.0.0 --port 8000 --reload ]
-# And run appfront.py file also:  [streamlit run appfront.py ]
+# And run Aniapp.py file also:  [streamlit run Aniapp.py ]
